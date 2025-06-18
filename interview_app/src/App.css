@@ -1,0 +1,500 @@
+/* --- Global Styles & Enhanced Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); /* Using Inter font */
+
+:root {
+    /* Color Palette */
+    --primary-color: #4A90E2;
+    --primary-hover-color: #357ABD;
+    --primary-light-color: #EAF2FB;
+    --secondary-color: #50E3C2;
+    --secondary-hover-color: #38BFA0;
+    --recording-color: #D0021B;
+    --recording-hover-color: #A90115;
+    --success-color: #7ED321;
+    --success-hover-color: #68B01C;
+    --warning-color: #F5A623;
+    --disabled-bg-color: #E9ECEF;
+    --disabled-text-color: #ADB5BD;
+
+    --background-color: #F7F8FC;
+    --container-bg-color: #FFFFFF;
+    --text-color: #24292E;
+    --text-muted-color: #6A737D;
+    --border-color: #E1E4E8;
+
+    --box-bg-light: #F6F8FA;
+    --question-box-bg: var(--primary-light-color);
+    --answer-box-bg: #FFFBEA;
+    --feedback-box-bg: #E6FFFA;
+
+    --error-bg-color: #FFEBEB;
+    --error-text-color: var(--recording-color);
+    --error-border-color: #FFCDD2;
+
+    /* Sizing & Spacing */
+    --border-radius: 8px;
+    --container-padding: 40px 50px;
+    --section-margin-bottom: 40px;
+    --element-spacing: 16px;
+
+    /* Shadows */
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --box-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+    max-width: 850px;
+    margin: 40px auto;
+    background-color: var(--container-bg-color);
+    padding: var(--container-padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-weight: 600;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.8em;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--primary-color);
+    padding-bottom: 0.6em;
+    position: relative;
+}
+
+h2 {
+    font-size: 1.6em;
+    color: var(--text-color);
+    margin-bottom: 1.2em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5em;
+}
+
+h4 {
+     font-size: 1.1em;
+     font-weight: 600;
+     color: var(--primary-color);
+     margin-bottom: 0.8em;
+}
+
+p {
+    margin-bottom: var(--element-spacing);
+    color: var(--text-muted-color);
+}
+
+p strong {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    color: var(--primary-hover-color);
+}
+
+/* --- Sections --- */
+.section {
+    margin-bottom: var(--section-margin-bottom);
+    padding-bottom: calc(var(--section-margin-bottom) * 0.75);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.section:last-child {
+    border-bottom: none;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+/* Center content in preparation/ready sections */
+.section.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.section.centered-content h2 {
+    border-bottom: none;
+}
+.section.centered-content p {
+     max-width: 600px;
+}
+
+/* --- API Select Styling --- */
+.section.centered-content > div { /* Style API Select Container */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    width: 100%; /* Make the container take full width */
+    max-width: 350px; /* Limit the width of the container if needed */
+    margin-bottom: var(--element-spacing);
+}
+
+.section.centered-content label[for="api-select"] {
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: block; /* Ensure label takes its own line */
+    text-align: left;  /* Align label text to the left */
+}
+
+.section.centered-content select#api-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--container-bg-color);
+    color: var(--text-color);
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%236A737D'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+    box-shadow: var(--box-shadow-inset);
+}
+
+.section.centered-content select#api-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); /* Highlight on focus */
+}
+
+.section.centered-content select#api-select option {
+    background-color: var(--container-bg-color);
+    color: var(--text-color);
+}
+
+
+/* --- Buttons --- */
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-right: var(--element-spacing);
+    transition: all 0.2s ease-out;
+    box-shadow: var(--box-shadow);
+    background-color: var(--primary-color);
+    color: white;
+    line-height: 1.5;
+}
+button:last-child {
+    margin-right: 0;
+}
+
+
+button:hover:not(:disabled) {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0px);
+    box-shadow: var(--box-shadow);
+}
+
+button:disabled {
+    background-color: var(--disabled-bg-color);
+    color: var(--disabled-text-color);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Button Variants */
+button.secondary {
+    background-color: var(--secondary-color);
+}
+button.secondary:hover:not(:disabled) {
+    background-color: var(--secondary-hover-color);
+}
+
+button.recording {
+    background-color: var(--recording-color);
+}
+button.recording:hover:not(:disabled) {
+    background-color: var(--recording-hover-color);
+}
+
+button.success {
+    background-color: var(--success-color);
+}
+button.success:hover:not(:disabled) {
+    background-color: var(--success-hover-color);
+}
+
+button.warning {
+     background-color: var(--warning-color);
+}
+button.warning:hover:not(:disabled) {
+     background-color: #DC8B0A;
+}
+
+
+/* Button Icons (using react-icons) */
+button svg {
+    font-size: 1.2em;
+}
+
+
+/* --- Display Boxes --- */
+.display-box {
+    margin-top: var(--element-spacing);
+    padding: 25px 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--box-bg-light);
+    min-height: 60px;
+    box-shadow: var(--box-shadow-inset);
+    position: relative;
+}
+
+.display-box p {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.display-box p:last-child {
+    margin-bottom: 0;
+}
+
+
+.question-box {
+    background-color: var(--question-box-bg);
+    border-left: 5px solid var(--primary-color);
+}
+.question-box p {
+    font-weight: 500;
+     font-size: 1.05em;
+}
+
+
+.answer-box {
+    background-color: var(--answer-box-bg);
+    border-left: 5px solid var(--warning-color);
+}
+.transcript-box {
+    min-height: 150px;
+    max-height: 350px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+.transcript-box p {
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 0.95em;
+    color: #333;
+}
+
+
+.feedback-box {
+    background-color: var(--feedback-box-bg);
+    border-left: 5px solid var(--secondary-color);
+}
+
+/* --- Status / Loading / Error --- */
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--error-text-color);
+    background-color: var(--error-bg-color);
+    border: 1px solid var(--error-border-color);
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--section-margin-bottom);
+    font-weight: 500;
+}
+.error-message svg {
+    font-size: 1.4em;
+    flex-shrink: 0;
+}
+
+.loading-text, em.loading-text {
+    color: var(--text-muted-color);
+    font-style: italic;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.loading-text .spinner {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Recording Indicator --- */
+.status-indicator.recording {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: var(--recording-color);
+  color: white;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(208, 2, 27, 0.4);
+}
+
+.status-indicator.recording .dot {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+
+/* --- Navigation & Completion --- */
+.navigation-section {
+    text-align: right;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.completion-section {
+    margin-top: var(--section-margin-bottom);
+    padding: 40px;
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.completion-section h2 {
+    text-align: center;
+    color: var(--success-color);
+    font-size: 1.8em;
+    margin-bottom: 1.5em;
+    border-bottom: none;
+}
+
+.summary-item {
+    background-color: var(--container-bg-color);
+    padding: 25px 30px;
+    margin-bottom: var(--element-spacing);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+    transition: box-shadow 0.2s ease;
+}
+.summary-item:hover {
+    box-shadow: var(--box-shadow-lg);
+}
+
+.summary-item:last-child {
+     margin-bottom: calc(var(--section-margin-bottom) * 0.75);
+     border-bottom: 1px solid var(--border-color);
+}
+
+
+.summary-item ol {
+    padding-left: 25px;
+    margin-bottom: 0;
+    color: var(--text-muted-color);
+}
+.summary-item li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+
+/* --- Audio Player Styling --- */
+audio {
+    width: 100%;
+    margin-bottom: var(--element-spacing);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+}
+
+/* Basic overrides for Chrome - may vary across browsers */
+audio::-webkit-media-controls-panel {
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    border: none;
+    padding: 10px;
+}
+audio::-webkit-media-controls-play-button {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    color: white;
+}
+audio::-webkit-media-controls-play-button:hover {
+     background-color: var(--primary-hover-color);
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: var(--text-muted-color);
+    font-weight: 500;
+}
+audio::-webkit-media-controls-volume-slider {
+     background-color: var(--primary-color);
+}
+
+
+/* --- Final Restart Button --- */
+.completion-section > button {
+    display: flex;
+    margin: 0 auto;
+    min-width: 220px;
+    background-color: var(--primary-color);
+}
+.completion-section > button:hover:not(:disabled) {
+     background-color: var(--primary-hover-color);
+}
